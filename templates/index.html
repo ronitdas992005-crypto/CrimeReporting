@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Crime Reporting Portal</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Crime Reporting Portal</h1>
+
+        <form action="/submit" method="POST">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Crime Type</label>
+            <select name="crimeType" required>
+                <option value="">Select</option>
+                <option>Cyber Crime</option>
+                <option>Theft</option>
+                <option>Harassment</option>
+                <option>Domestic Violence</option>
+                <option>Fraud</option>
+            </select>
+
+            <label>Location</label>
+            <input type="text" name="location" required>
+
+            <label>Description</label>
+            <textarea name="description" rows="5" required></textarea>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+</body>
+</html>
