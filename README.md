@@ -1,6 +1,9 @@
-# Online Crime Reporting Portal
+# Crime Reporting System
 
-This is the frontend + backend (Flask) project.
+## 🔗 Frontend Link
+Click here to open the frontend:
 
-Frontend (Hosted on GitHub Pages):
-👉 (Link will be added after Pages is enabled)
+👉 **[index.html](https://github.com/ronitdas992005-crypto/CrimeReporting/blob/main/index.html)**
+
+## 📌 Description
+This is the frontend of the Online Crime Reporting System.
