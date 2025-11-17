@@ -4,36 +4,55 @@
     <meta charset="UTF-8">
     <title>Online Crime Reporting Portal</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="background-overlay"></div>
+
     <div class="container">
-        <h1>Online Crime Reporting Portal</h1>
+        <h1 class="title">Online Crime Reporting Portal</h1>
 
-        <form action="/submit" method="POST">
-            <label>Full Name</label>
-            <input type="text" name="name" required>
+        <form id="crimeForm" class="form-box">
+            
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your full name" required>
+            </div>
 
-            <label>Email</label>
-            <input type="email" name="email" required>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email ID" required>
+            </div>
 
-            <label>Crime Type</label>
-            <select name="crimeType" required>
-                <option value="">Select</option>
-                <option>Cyber Crime</option>
-                <option>Theft</option>
-                <option>Harassment</option>
-                <option>Domestic Violence</option>
-                <option>Fraud</option>
-            </select>
+            <div class="input-group">
+                <label>Crime Type</label>
+                <select name="crimeType" required>
+                    <option value="">Select crime category</option>
+                    <option>Cyber Crime</option>
+                    <option>Theft</option>
+                    <option>Harassment</option>
+                    <option>Domestic Violence</option>
+                    <option>Fraud</option>
+                </select>
+            </div>
 
-            <label>Location</label>
-            <input type="text" name="location" required>
+            <div class="input-group">
+                <label>Location</label>
+                <input type="text" name="location" placeholder="Enter crime location" required>
+            </div>
 
-            <label>Description</label>
-            <textarea name="description" rows="5" required></textarea>
+            <div class="input-group">
+                <label>Description</label>
+                <textarea name="description" rows="5" placeholder="Write details of the incident…" required></textarea>
+            </div>
 
-            <button type="submit">Submit Report</button>
+            <button type="submit" class="submit-btn">Submit Report</button>
         </form>
+
+        <p id="status" class="status"></p>
     </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>

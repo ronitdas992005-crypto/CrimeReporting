@@ -1,52 +1,121 @@
 body {
-    background: #f0f2f5;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
+/* Floating background circles */
+.background-overlay::before, 
+.background-overlay::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    top: -100px;
+    left: -120px;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.background-overlay::after {
+    top: auto;
+    bottom: -120px;
+    right: -100px;
+    left: auto;
+}
+
+/* Main card */
 .container {
     width: 450px;
-    margin: 40px auto;
-    padding: 25px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
-}
-
-h1 {
+    padding: 30px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    backdrop-filter: blur(12px);
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-label {
-    font-weight: bold;
+/* Title */
+.title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    color: #eee;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 input, select, textarea {
     width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    padding: 12px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
 }
 
-button {
+input::placeholder,
+textarea::placeholder {
+    color: #ddd;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Submit button */
+.submit-btn {
     width: 100%;
-    padding: 12px;
-    background: #007bff;
+    padding: 14px;
+    margin-top: 10px;
     border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     color: white;
     font-size: 16px;
-    border-radius: 5px;
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover {
-    background: #0056b3;
+.submit-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
 }
 
-#status {
-    text-align: center;
+/* Status message */
+.status {
     margin-top: 15px;
-    color: green;
-    font-weight: bold;
+    font-weight: 600;
+    color: #00ff9d;
+    font-size: 15px;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
