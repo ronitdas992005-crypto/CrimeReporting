@@ -1,40 +1,49 @@
-// Toggle Password Visibility
-function togglePassword() {
-    const passField = document.getElementById("password");
-    passField.type = passField.type === "password" ? "text" : "password";
+// ... (start of your JS code)
+
+// Handle crime report form submission
+const form = document.getElementById("crimeForm");
+if (form) {
+  form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const status = document.getElementById("status");
+      status.textContent = "Submitting report...";
+      status.style.color = "#00eaff";
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      try {
+          const response = await fetch("/submit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+              // --- CHANGED: Now redirects to /index ---
+              status.textContent = "Report submitted successfully! Submit another report below.";
+              status.style.color = "#00ffb0";
+
+              // Clear the form after submission
+              form.reset();
+
+              // No redirect needed if staying on the same page, but we'll remove the success message after a delay
+              setTimeout(() => {
+                  status.textContent = "";
+              }, 3000);
+
+          } else {
+              status.textContent = "Submission failed. Try again.";
+              status.style.color = "#ff6b6b";
+          }
+      } catch (error) {
+          status.textContent = "Error connecting to server.";
+          status.style.color = "#ff6b6b";
+      }
+  });
 }
 
-// Form Validation (Basic)
-function validateForm() {
-    const fullName = document.getElementById("full_name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if (fullName === "" || email === "" || password === "") {
-        alert("All fields are required!");
-        return false;
-    }
-
-    if (!email.includes("@")) {
-        alert("Enter a valid email.");
-        return false;
-    }
-
-    return true;
-}
-
-// Logout confirmation popup
-function confirmLogout() {
-    return confirm("Are you sure you want to log out?");
-}
-
-// Upload preview (optional future feature)
-function previewImage(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById("preview");
-
-    if (file) {
-        preview.src = URL.createObjectURL(file);
-        preview.style.display = "block";
-    }
-}
+// ... (rest of your JS code remains the same)

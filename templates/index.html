@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Online Crime Reporting Portal</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="background-overlay"></div>
+<div class="background-overlay"></div>
 
-    <div class="container">
-        <h1 class="title">Online Crime Reporting Portal</h1>
+<div class="container">
+    
+    {% if status == 'success' %}
+        <p class="status" style="color: #00ffb0; font-weight: 600; font-size: 18px; margin-bottom: 20px;">
+            ✅ Report Submitted Successfully!
+        </p>
+    {% elif status == 'error' %}
+        <p class="error" style="color: #ff6b6b; font-weight: 600; font-size: 18px; margin-bottom: 20px;">
+            ❌ Submission failed. Please try again.
+        </p>
+    {% endif %}
+    <h1 class="title">Online Crime Reporting Portal</h1>
 
-        <form id="crimeForm" class="form-box">
-            
-            <div class="input-group">
-                <label>Full Name</label>
-                <input type="text" name="name" placeholder="Enter your full name" required>
-            </div>
+    <form action="/index" method="POST" class="form-box">
 
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Enter your email ID" required>
-            </div>
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your full name" required>
+        </div>
 
-            <div class="input-group">
-                <label>Crime Type</label>
-                <select name="crimeType" required>
-                    <option value="">Select crime category</option>
-                    <option>Cyber Crime</option>
-                    <option>Theft</option>
-                    <option>Harassment</option>
-                    <option>Domestic Violence</option>
-                    <option>Fraud</option>
-                </select>
-            </div>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email ID" required>
+        </div>
 
-            <div class="input-group">
-                <label>Location</label>
-                <input type="text" name="location" placeholder="Enter crime location" required>
-            </div>
+        <div class="input-group">
+            <label>Crime Type</label>
+            <select name="crimeType" required>
+                <option value="">Select crime category</option>
+                <option>Cyber Crime</option>
+                <option>Theft</option>
+                <option>Harassment</option>
+                <option>Domestic Violence</option>
+                <option>Fraud</option>
+            </select>
+        </div>
 
-            <div class="input-group">
-                <label>Description</label>
-                <textarea name="description" rows="5" placeholder="Write details of the incident…" required></textarea>
-            </div>
+        <div class="input-group">
+            <label>Location</label>
+            <input type="text" name="location" placeholder="Enter crime location" required>
+        </div>
 
-            <button type="submit" class="submit-btn">Submit Report</button>
-        </form>
+        <div class="input-group">
+            <label>Description</label>
+            <textarea name="description" rows="5" placeholder="Write details of the incident…" required></textarea>
+        </div>
 
-        <p id="status" class="status"></p>
-    </div>
+        <button type="submit" class="submit-btn">Submit Report</button>
+    </form>
 
-    <script src="/static/script.js"></script>
+</div>
+
 </body>
 </html>

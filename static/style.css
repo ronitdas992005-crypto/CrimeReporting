@@ -1,121 +1,177 @@
+/* --------------------------
+   GLOBAL STYLING
+--------------------------- */
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #141e30, #243b55);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f1624, #1f2e47);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Floating background circles */
+/* Floating Glow Lights */
 .background-overlay::before, 
 .background-overlay::after {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-    top: -100px;
-    left: -120px;
-    filter: blur(80px);
-    z-index: -1;
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: rgba(0, 183, 255, 0.08);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  animation: floatGlow 6s infinite alternate ease-in-out;
+}
+
+.background-overlay::before {
+  top: -120px;
+  left: -140px;
 }
 
 .background-overlay::after {
-    top: auto;
-    bottom: -120px;
-    right: -100px;
-    left: auto;
+  bottom: -140px;
+  right: -100px;
 }
 
-/* Main card */
+/* Glow animation */
+@keyframes floatGlow {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(25px) scale(1.1); }
+}
+
+/* --------------------------
+ MAIN CARD
+--------------------------- */
+
 .container {
-    width: 450px;
-    padding: 30px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    backdrop-filter: blur(12px);
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
+  width: 450px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  backdrop-filter: blur(14px);
+  text-align: center;
+  animation: slideUp 0.7s ease-out;
 }
 
-/* Title */
+/* Small box for login / success page */
+.small-box {
+  width: 380px;
+  padding: 25px;
+}
+
+/* Slide animation */
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* --------------------------
+ TITLES
+--------------------------- */
+
 .title {
-    color: #fff;
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
 }
 
-/* Input fields */
+/* --------------------------
+ INPUT FIELDS
+--------------------------- */
+
 .input-group {
-    text-align: left;
-    margin-bottom: 18px;
+  text-align: left;
+  margin-bottom: 18px;
 }
 
 .input-group label {
-    color: #eee;
-    font-size: 14px;
-    font-weight: 500;
+  color: #eaeaea;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 2px;
 }
 
 input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: none;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: 0.2s;
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.25s ease;
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #ddd;
+  color: #cccccc;
 }
 
 input:focus, select:focus, textarea:focus {
-    background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
 }
 
-/* Submit button */
+/* --------------------------
+ BUTTONS
+--------------------------- */
+
 .submit-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #0072ff, #00c6ff);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #008cff, #00c6ff);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.3);
 }
 
-/* Status message */
+/* --------------------------
+ STATUS / SUCCESS / ERROR
+--------------------------- */
+
 .status {
-    margin-top: 15px;
-    font-weight: 600;
-    color: #00ff9d;
-    font-size: 15px;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #00ffb0;
+  font-size: 16px;
+  text-shadow: 0 0 5px rgba(0,255,170,0.3);
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.error {
+  color: #ff6b6b;
+  font-size: 15px;
+  margin-top: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* --------------------------
+ LINKS INSIDE BUTTON STYLE
+--------------------------- */
+
+a.submit-btn {
+  display: block;
+  text-align: center;
 }
